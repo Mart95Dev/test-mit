@@ -15,5 +15,5 @@ const SearchBoxStyled = styled.div`
   position: absolute;
   top: 1.2rem;
   left: 5rem;
-  width: 15rem;
+  width: 20rem;
 `;
