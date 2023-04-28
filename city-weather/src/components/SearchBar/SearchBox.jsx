@@ -4,7 +4,7 @@ import InputText from "./InputText";
 function SearchBox() {
   return (
     <SearchBoxStyled>
-      <InputText placeholder="Search weather city" />
+      <InputText placeholder="Search City" />
     </SearchBoxStyled>
   );
 }

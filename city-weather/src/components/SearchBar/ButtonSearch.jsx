@@ -1,15 +1,31 @@
-import React from 'react'
+import React from "react";
+import { SlMagnifier } from "react-icons/sl";
+import styled from "styled-components";
 
 function ButtonSearch() {
   return (
-    <div>
-      button search
-    </div>
-  )
+    <ButtonSearchStyled>
+      <SlMagnifier className="icon" />
+    </ButtonSearchStyled>
+  );
 }
 
-export default ButtonSearch
+export default ButtonSearch;
 
-const  = styled.`
-  
+const ButtonSearchStyled = styled.button`
+  border: none;
+  background: white;
+
+  .icon {
+    font-size: 22px;
+    color:#689df6;
+    font-weight: bold;
+
+    :hover {
+      color: #929090;
+    }
+    
+    :active{
+        color:#393838;
+    }
 `;
