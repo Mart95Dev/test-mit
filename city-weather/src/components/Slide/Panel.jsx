@@ -3,19 +3,16 @@ import styled from "styled-components";
 import PanelHeader from "./PanelHeader";
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
-import { EMPTY_DATA } from "./../../api/EmptyData";
 import PanelEmpty from "./PanelEmpty";
 
 function Panel() {
   //state
   const [isOpen, setIsOpen] = useState(false);
-  const [panel, setPanel] = useState([1]);
-  const [weatherData, setWeatherData] = useState(EMPTY_DATA);
+  const [panel, setPanel] = useState([]);
 
   //comportement
   const handeClickPanel = (open) => {
     setIsOpen(!open);
-    console.log("panel", isOpen);
   };
 
   return (
