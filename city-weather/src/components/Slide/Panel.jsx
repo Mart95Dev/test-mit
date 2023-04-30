@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PanelHeader from "./PanelHeader";
-// import MessageEmpty from './card/MessageEmpty';
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
+import { EMPTY_DATA } from "./../../api/EmptyData";
+import PanelEmpty from "./PanelEmpty";
 
 function Panel() {
   //state
   const [isOpen, setIsOpen] = useState(false);
+  const [panel, setPanel] = useState([1]);
+  const [weatherData, setWeatherData] = useState(EMPTY_DATA);
 
   //comportement
   const handeClickPanel = (open) => {
@@ -24,23 +27,25 @@ function Panel() {
         isSlideOpened={isOpen}
         onClick={() => handeClickPanel(isOpen)}
       />
+      {panel.length === 0 ? (
+        <PanelEmpty />
+      ) : (
+        <>
+          <PanelHeader />
+          <BoxWeather
+            className="absolute top-[17rem]"
+            day="today"
+            date="thursday 04/29"
+          />
 
-      {}
-      <>
-        <PanelHeader />
-        <BoxWeather
-          className="absolute top-[17rem]"
-          day="today"
-          date="thursday 04/29"
-        />
-
-        <BoxWeather
-          className="absolute top-[34rem]"
-          top="35.4rem"
-          day="tomorrow"
-          date="friday 04/30"
-        />
-      </>
+          <BoxWeather
+            className="absolute top-[34rem]"
+            top="35.4rem"
+            day="tomorrow"
+            date="friday 04/30"
+          />
+        </>
+      )}
     </PanelStyled>
   );
 }
@@ -52,6 +57,7 @@ const PanelStyled = styled.div`
   position: fixed;
   top: 0;
   height: 100vh;
+  text-decoration: none;
 
   width: 26rem;
   background: white;
