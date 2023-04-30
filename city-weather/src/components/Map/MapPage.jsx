@@ -1,15 +1,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { positionCities } from "./coordinates";
 import { zoomStart } from "./coordinates";
-// import SearchBox from "./../SearchBar/SearchBox";
 import styled from "styled-components";
+import Card from "./../../Reusable/Card";
 
 export function MapPage() {
   return (
     <MapPageStyled>
       <MapContainer
         center={[zoomStart[0].latitude, zoomStart[0].longitude]}
-        zoom={6}
+        zoom={5}
         scrollWheelZoom={true}
         className="map"
       >
@@ -17,10 +17,12 @@ export function MapPage() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {positionCities.map(({ id, latitude, longitude }) => {
+        {positionCities.map(({ id, latitude, longitude, url }) => {
           return (
             <Marker key={id} position={[latitude, longitude]}>
-              <Popup>ville de {id}.Température ....</Popup>
+              <Popup>
+                <Card cityName={id} image={url} />
+              </Popup>
             </Marker>
           );
         })}
