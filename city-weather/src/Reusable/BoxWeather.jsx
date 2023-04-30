@@ -21,8 +21,8 @@ export default BoxWeather;
 
 const BoxWeatherStyled = styled.div`
   z-index: 2;
-  width: 100%;
-  position: absolute;
+  width: 26rem;
+  position: fixed;
   padding-top: 0.5rem;
   border-top: 1px solid #d9d9d9;
   background: white;

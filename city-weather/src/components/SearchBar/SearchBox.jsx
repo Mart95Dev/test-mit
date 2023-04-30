@@ -12,8 +12,8 @@ function SearchBox() {
 export default SearchBox;
 const SearchBoxStyled = styled.div`
   z-index: 4;
-  position: absolute;
+  position: fixed;
   top: 1.2rem;
-  left: 1rem;
+  left: 1.4rem;
   width: 23rem;
 `;

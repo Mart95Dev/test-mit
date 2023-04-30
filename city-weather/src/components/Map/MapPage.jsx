@@ -11,6 +11,7 @@ export function MapPage() {
         center={[zoomStart[0].latitude, zoomStart[0].longitude]}
         zoom={5}
         scrollWheelZoom={true}
+        zoomControl={false}
         className="map"
       >
         <TileLayer

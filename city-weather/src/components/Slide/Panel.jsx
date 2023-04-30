@@ -3,23 +3,44 @@ import styled from "styled-components";
 import PanelHeader from "./PanelHeader";
 // import MessageEmpty from './card/MessageEmpty';
 import BoxWeather from "./../../Reusable/BoxWeather";
+import ButtonPanel from "./../Slide/ButtonPanel";
 
 function Panel() {
+  //state
+  const [isOpen, setIsOpen] = useState(false);
+
+  //comportement
+  const handeClickPanel = (open) => {
+    setIsOpen(!open);
+    console.log("panel", isOpen);
+  };
+
   return (
-    <PanelStyled className="text-3xl font-bold underline">
-      <PanelHeader />
-      <BoxWeather
-        className="absolute top-[17rem]"
-        day="today"
-        date="thursday 04/29"
+    <PanelStyled
+      className="text-3xl font-bold underline"
+      style={isOpen ? { left: "0rem" } : { left: "-26rem" }}
+    >
+      <ButtonPanel
+        isSlideOpened={isOpen}
+        onClick={() => handeClickPanel(isOpen)}
       />
 
-      <BoxWeather
-        className="absolute top-[34rem]"
-        top="35.4rem"
-        day="tomorrow"
-        date="friday 04/30"
-      />
+      {}
+      <>
+        <PanelHeader />
+        <BoxWeather
+          className="absolute top-[17rem]"
+          day="today"
+          date="thursday 04/29"
+        />
+
+        <BoxWeather
+          className="absolute top-[34rem]"
+          top="35.4rem"
+          day="tomorrow"
+          date="friday 04/30"
+        />
+      </>
     </PanelStyled>
   );
 }
@@ -28,9 +49,10 @@ export default Panel;
 
 const PanelStyled = styled.div`
   z-index: 2;
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
+  height: 100vh;
+
   width: 26rem;
   background: white;
   -webkit-box-shadow: 1px 1px 11px -3px rgba(0, 0, 0, 0.75);
