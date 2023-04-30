@@ -17,15 +17,18 @@ const ButtonSearchStyled = styled.button`
   background: white;
 
   .icon {
+    position: relative;
+    left: 1.5rem;
     font-size: 22px;
-    color:#689df6;
+    color: #689df6;
     font-weight: bold;
 
     :hover {
       color: #929090;
     }
-    
-    :active{
-        color:#393838;
+
+    :active {
+      color: #393838;
     }
+  }
 `;
