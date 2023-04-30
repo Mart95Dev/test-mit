@@ -10,7 +10,7 @@ function SearchBox() {
 }
 
 export default SearchBox;
-const SearchBoxStyled = styled.div`
+const SearchBoxStyled = styled.form`
   z-index: 4;
   position: fixed;
   top: 1.2rem;
