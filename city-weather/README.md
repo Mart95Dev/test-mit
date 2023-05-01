@@ -1,8 +1,8 @@
 # Map to display the weather of 4 cities and launching a search
 
-The project aims to display a world map on which you can zoom. 4 markers are displayed on the page. They indicate the weather of 3 days with the days.
+The objective of the project is to present an interactive world map that allows zooming. The page also displays 4 markers which correspond to the weather for the next 3 days, indicating the days involved.
 
-A search zone allows to point with a marker the city while displaying meteorological data.
+Additionally, there is a search function that enables selecting a city by pointing to it on the map and displaying the corresponding weather data.
 
 ## Available Scripts
 
