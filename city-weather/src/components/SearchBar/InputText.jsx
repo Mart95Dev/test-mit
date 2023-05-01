@@ -1,20 +1,27 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
-import ButtonSearch from "./ButtonSearch";
+// import ButtonSearch from "./ButtonSearch";
 
-function InputText({ placeholder }) {
+const InputText = forwardRef(({ onChange, placeholder }, ref) => {
   return (
     <InputTextStyled>
-      <input type="text" aria-label={placeholder} placeholder={placeholder} />
-      <ButtonSearch />
+      <input
+        ref={ref}
+        onChange={onChange}
+        type="text"
+        aria-label={placeholder}
+        placeholder={placeholder}
+      />
+      {/* <ButtonSearch /> */}
     </InputTextStyled>
   );
-}
+});
 
 export default InputText;
 const InputTextStyled = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   background: white;
   -webkit-box-shadow: 1px 1px 11px -3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 1px 11px -3px rgba(0, 0, 0, 0.75);

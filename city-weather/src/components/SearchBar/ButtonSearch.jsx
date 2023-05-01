@@ -13,8 +13,10 @@ function ButtonSearch() {
 export default ButtonSearch;
 
 const ButtonSearchStyled = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 3.3rem;
   border: none;
-  background: white;
 
   .icon {
     position: relative;
