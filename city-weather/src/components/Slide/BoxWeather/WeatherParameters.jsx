@@ -4,11 +4,11 @@ import styled from "styled-components";
 function WeatherParameters({ temp, WindSpeed, tempIcon, altImage }) {
   return (
     <WeatherParametersStyled>
-      <span>{temp}</span>
+      <span>{`${temp}°C`}</span>
       <span className=" border-[#D9D9D9] border-l border-r">
         <img src={tempIcon} alt={altImage} />
       </span>
-      <span>{WindSpeed}</span>
+      <span>{`${WindSpeed}km/h`}</span>
     </WeatherParametersStyled>
   );
 }

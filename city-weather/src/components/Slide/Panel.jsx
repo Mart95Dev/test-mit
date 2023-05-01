@@ -15,7 +15,7 @@ function Panel() {
   };
 
   const ellipse = (str) => {
-    const maxLength = 14;
+    const maxLength = 20;
     let newStr = str.slice(0, maxLength);
 
     if (str.length > maxLength) {

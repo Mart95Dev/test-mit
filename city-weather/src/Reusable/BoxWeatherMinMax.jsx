@@ -5,7 +5,7 @@ function BoxWeatherMinMax({ title, temp }) {
   return (
     <BoxWeatherMinMaxStyled>
       <span className="font-sans">{title}</span>
-      <span>{temp}</span>
+      <span>{`${temp}°C`}</span>
     </BoxWeatherMinMaxStyled>
   );
 }

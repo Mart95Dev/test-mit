@@ -25,8 +25,8 @@ function BoxWeather({
         altImage={altImage}
       />
       <div className="flex gap-10">
-        <BoxWeatherMinMax title="Minimum of day" temp={tempMini} />
-        <BoxWeatherMinMax title="Maximal of day" temp={tempMax} />
+        <BoxWeatherMinMax title="Tempétaure min." temp={tempMini} />
+        <BoxWeatherMinMax title="Tempétaure max." temp={tempMax} />
       </div>
     </BoxWeatherStyled>
   );
