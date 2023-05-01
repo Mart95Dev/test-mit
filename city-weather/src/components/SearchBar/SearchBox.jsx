@@ -17,26 +17,22 @@ function SearchBox() {
 
   let inputRef = useRef(null);
 
-  const handleChange = () => {};
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (inputRef.current.value === "") return setIsOpen(!isOpen);
-    const newCity = { city: inputRef.current.value.trim(), image: null };
-    fetchData([...positionCities, newCity]).then((data) => {
-      console.log(data);
-      setWeatherMarkerMap(data);
-    });
+    const prompt = inputRef.current.value.trim();
+    if (prompt.length > 0) {
+      if (prompt === "") return setIsOpen(false);
+      const newCity = { city: prompt, image: null };
+      fetchData([...positionCities, newCity]).then((data) => {
+        setWeatherMarkerMap(data);
+        setIsOpen(true);
+      });
+    }
   };
 
   return (
     <SearchBoxStyled onSubmit={(e) => handleSubmit(e)}>
-      <InputText
-        ref={inputRef}
-        onChange={handleChange}
-        placeholder="Search City"
-      />
+      <InputText ref={inputRef} placeholder="Search City" />
       <ButtonSearch />
     </SearchBoxStyled>
   );

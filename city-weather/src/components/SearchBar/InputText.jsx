@@ -2,12 +2,11 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 // import ButtonSearch from "./ButtonSearch";
 
-const InputText = forwardRef(({ onChange, placeholder }, ref) => {
+const InputText = forwardRef(({ placeholder }, ref) => {
   return (
     <InputTextStyled>
       <input
         ref={ref}
-        onChange={onChange}
         type="text"
         aria-label={placeholder}
         placeholder={placeholder}
