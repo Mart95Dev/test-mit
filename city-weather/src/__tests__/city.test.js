@@ -8,11 +8,9 @@ test("input value updates on button click", () => {
   render(<ButtonSearch />);
 
   const inputElement = screen.getByPlaceholderText("Saisir une ville");
-  // const buttonElement = screen.queryByClassName("button");
   const searchValue = "toulouse";
 
   fireEvent.change(inputElement, { target: { value: searchValue } });
-  // fireEvent.click(buttonElement);
 
   expect(inputElement.value).toBe(searchValue);
 });
