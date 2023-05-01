@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-function WeatherParameters() {
+function WeatherParameters({ temp, WindSpeed, tempIcon, altImage }) {
   return (
     <WeatherParametersStyled>
-      <span>Temp°</span>
-      <span className=" border-[#D9D9D9] border-l border-r">Icon</span>
-      <span>15km/h</span>
+      <span>{temp}</span>
+      <span className=" border-[#D9D9D9] border-l border-r">
+        <img src={tempIcon} alt={altImage} />
+      </span>
+      <span>{WindSpeed}</span>
     </WeatherParametersStyled>
   );
 }

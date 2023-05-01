@@ -4,14 +4,29 @@ import TitleDaily from "./../components/Slide/BoxWeather/TitleDaily";
 import WeatherParameters from "./../components/Slide/BoxWeather/WeatherParameters";
 import BoxWeatherMinMax from "./BoxWeatherMinMax";
 
-function BoxWeather({ day, date, className }) {
+function BoxWeather({
+  day,
+  date,
+  className,
+  tempMini,
+  tempMax,
+  temp,
+  WindSpeed,
+  tempIcon,
+  altImage,
+}) {
   return (
     <BoxWeatherStyled className={className}>
       <TitleDaily day={day} date={date} />
-      <WeatherParameters />
+      <WeatherParameters
+        temp={temp}
+        WindSpeed={WindSpeed}
+        tempIcon={tempIcon}
+        altImage={altImage}
+      />
       <div className="flex gap-10">
-        <BoxWeatherMinMax title="Minimum of day" temp="07°" />
-        <BoxWeatherMinMax title="Maximal of day" temp="27°" />
+        <BoxWeatherMinMax title="Minimum of day" temp={tempMini} />
+        <BoxWeatherMinMax title="Maximal of day" temp={tempMax} />
       </div>
     </BoxWeatherStyled>
   );

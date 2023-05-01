@@ -5,7 +5,7 @@ function PanelHeader({ city }) {
   return (
     <PanelHeaderStyled className="pt-20 ">
       <div className=" meteo uppercase">Météo</div>
-      <span className="city absolute pt-20 ">{city}</span>
+      <span className="city absolute pt-20">{city}</span>
       <img className="panneau" src="./images/panneau-ville.png" alt={city} />
     </PanelHeaderStyled>
   );
