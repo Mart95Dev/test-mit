@@ -4,24 +4,19 @@ import AppContext from "../../context/AppContext";
 import PanelHeader from "./PanelHeader";
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
-import PanelEmpty from "./PanelEmpty";
-import { translateDayAndDate } from "./helper";
+import PanelEmpty from "./PanelEmpty"; // @Fixme
+import { translateDayAndDate, ellipse } from "./helper";
+
+/**
+ * Display panel with weather informations
+ *
+ */
 
 function Panel() {
   const { weatherMarkerMap, isOpen, setIsOpen } = useContext(AppContext);
 
   const handleClickPanel = (open) => {
     if (weatherMarkerMap.length === 5) setIsOpen(!open);
-  };
-
-  const ellipse = (str) => {
-    const maxLength = 20;
-    let newStr = str.slice(0, maxLength);
-
-    if (str.length > maxLength) {
-      newStr += "...";
-    }
-    return newStr;
   };
 
   return (
@@ -33,7 +28,8 @@ function Panel() {
         isSlideOpened={isOpen}
         onClick={() => handleClickPanel(isOpen)}
       />
-      {weatherMarkerMap.length === 5 ? (
+
+      {weatherMarkerMap.length === 5 && (
         <>
           <PanelHeader
             city={ellipse(weatherMarkerMap[4].dataApi.location.name)}
@@ -88,8 +84,6 @@ function Panel() {
             altImage={weatherMarkerMap[4].dataApi.location.name}
           />
         </>
-      ) : (
-        <PanelEmpty />
       )}
     </PanelStyled>
   );
