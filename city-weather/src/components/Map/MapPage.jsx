@@ -7,8 +7,12 @@ import styled from "styled-components";
 import Card from "./../../Reusable/Card";
 import L from "leaflet";
 
+/**
+ * display map and marker on map on load
+ *
+ */
+
 export function MapPage() {
-  //this.state.
   const redIcon = L.icon({
     iconUrl: "/images/marker-icon-red.png",
     iconSize: [25, 41],
@@ -42,7 +46,6 @@ export function MapPage() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* {positionCities.map(({ id, latitude, longitude, url }) => { */}
         {weatherMarkerMap.map((data) => {
           return (
             <Marker

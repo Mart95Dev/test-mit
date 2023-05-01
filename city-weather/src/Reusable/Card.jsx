@@ -1,6 +1,12 @@
 import React from "react";
 import { translateDay } from "../components/Slide/helper";
 
+/**
+ *
+ * Display card on map onload
+ *
+ */
+
 function Card({ cityName, image, days }) {
   return (
     <div className="p-o m-0 w-full overflow-hidden rounded-lg shadow-lg bg-[#689df6] text-gray-100">

@@ -4,6 +4,12 @@ import TitleDaily from "./../components/Slide/BoxWeather/TitleDaily";
 import WeatherParameters from "./../components/Slide/BoxWeather/WeatherParameters";
 import BoxWeatherMinMax from "./BoxWeatherMinMax";
 
+/**
+ *
+ * Box to display informations of Weather on panel
+ *
+ */
+
 function BoxWeather({
   day,
   date,
