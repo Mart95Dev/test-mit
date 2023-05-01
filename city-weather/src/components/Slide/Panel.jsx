@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import AppContext from "../../context/AppContext";
 import PanelHeader from "./PanelHeader";
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
 import PanelEmpty from "./PanelEmpty";
+import { translateDay } from "./helper";
 
 function Panel() {
   //state
-  const [isOpen, setIsOpen] = useState(false);
-  const [panel, setPanel] = useState([]);
+  const { weatherData, isOpen, setIsOpen } = useContext(AppContext);
 
   //comportement
   const handeClickPanel = (open) => {
@@ -24,9 +25,7 @@ function Panel() {
         isSlideOpened={isOpen}
         onClick={() => handeClickPanel(isOpen)}
       />
-      {panel.length === 0 ? (
-        <PanelEmpty />
-      ) : (
+      {weatherData.length > 0 ? (
         <>
           <PanelHeader />
           <BoxWeather
@@ -42,6 +41,8 @@ function Panel() {
             date="friday 04/30"
           />
         </>
+      ) : (
+        <PanelEmpty />
       )}
     </PanelStyled>
   );
