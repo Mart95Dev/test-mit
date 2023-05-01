@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function PanelHeader() {
+function PanelHeader({ city }) {
   return (
     <PanelHeaderStyled className="pt-20 ">
       <div className=" meteo uppercase">Météo</div>
-      <span className="city absolute pt-20 ">nom de la ville</span>
-      <img
-        className="panneau"
-        src="./images/panneau-ville.png"
-        alt="panneau de la ville"
-      />
+      <span className="city absolute pt-20 ">{city}</span>
+      <img className="panneau" src="./images/panneau-ville.png" alt={city} />
     </PanelHeaderStyled>
   );
 }
@@ -31,7 +27,7 @@ const PanelHeaderStyled = styled.div`
 
   .city {
     top: 5.7rem;
-    left: 6.6rem;
+    left: 4.2rem;
     font-size: 2rem;
   }
 
