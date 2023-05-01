@@ -44,7 +44,6 @@ export function MapPage() {
         />
         {/* {positionCities.map(({ id, latitude, longitude, url }) => { */}
         {weatherMarkerMap.map((data) => {
-          console.log(data);
           return (
             <Marker
               key={data.dataApi.location.name}
