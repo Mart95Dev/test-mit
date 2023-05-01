@@ -37,5 +37,6 @@ const InputTextStyled = styled.div`
     border-radius: 1rem 0 0 1rem;
     outline: none;
     padding-left: 10px;
+    text-transform: capitalize;
   }
 `;
