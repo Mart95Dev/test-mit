@@ -6,7 +6,7 @@ A search zone allows to point with a marker the city while displaying meteorolog
 
 ## Available Scripts
 
-In the project directory, you can run with docker-compose : npm launch
+In the project directory, you can run with docker-compose : npm run launch
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
