@@ -12,8 +12,7 @@ import { positionCities } from "./../Map/coordinates";
  */
 function SearchBox() {
   //state
-  const { setWeatherMarkerMap, setWeatherData, isOpen, setIsOpen, fetchData } =
-    useContext(AppContext);
+  const { setWeatherMarkerMap, setIsOpen, fetchData } = useContext(AppContext);
 
   let inputRef = useRef(null);
 
@@ -31,8 +30,8 @@ function SearchBox() {
   };
 
   return (
-    <SearchBoxStyled onSubmit={(e) => handleSubmit(e)}>
-      <InputText ref={inputRef} placeholder="Search City" />
+    <SearchBoxStyled id="prompt" onSubmit={(e) => handleSubmit(e)}>
+      <InputText ref={inputRef} placeholder="Saisir une ville" />
       <ButtonSearch />
     </SearchBoxStyled>
   );
