@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import AppContext from "../../context/AppContext";
 import PanelHeader from "./PanelHeader";
-// import MessageEmpty from './card/MessageEmpty';
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
+import PanelEmpty from "./PanelEmpty"; // @Fixme
+import { translateDayAndDate, ellipse } from "./helper";
+
+/**
+ * Display panel with weather informations
+ *
+ */
 
 function Panel() {
-  //state
-  const [isOpen, setIsOpen] = useState(false);
+  const { weatherMarkerMap, isOpen, setIsOpen } = useContext(AppContext);
 
-  //comportement
-  const handeClickPanel = (open) => {
-    setIsOpen(!open);
-    console.log("panel", isOpen);
+  const handleClickPanel = (open) => {
+    if (weatherMarkerMap.length === 5) setIsOpen(!open);
   };
 
   return (
@@ -22,25 +26,65 @@ function Panel() {
     >
       <ButtonPanel
         isSlideOpened={isOpen}
-        onClick={() => handeClickPanel(isOpen)}
+        onClick={() => handleClickPanel(isOpen)}
       />
 
-      {}
-      <>
-        <PanelHeader />
-        <BoxWeather
-          className="absolute top-[17rem]"
-          day="today"
-          date="thursday 04/29"
-        />
+      {weatherMarkerMap.length === 5 && (
+        <>
+          <PanelHeader
+            city={ellipse(weatherMarkerMap[4].dataApi.location.name)}
+          />
+          <BoxWeather
+            className="absolute top-[17rem]"
+            day="Aujourd'hui"
+            date={translateDayAndDate(
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].date
+            )}
+            tempMini={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.mintemp_c
+            }
+            tempMax={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.maxtemp_c
+            }
+            temp={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.avgtemp_c
+            }
+            WindSpeed={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.avgvis_km
+            }
+            tempIcon={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.condition
+                .icon
+            }
+            altImage={weatherMarkerMap[4].dataApi.location.name}
+          />
 
-        <BoxWeather
-          className="absolute top-[34rem]"
-          top="35.4rem"
-          day="tomorrow"
-          date="friday 04/30"
-        />
-      </>
+          <BoxWeather
+            className="absolute top-[34rem]"
+            day="Demain"
+            date={translateDayAndDate(
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].date
+            )}
+            tempMini={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.mintemp_c
+            }
+            tempMax={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.maxtemp_c
+            }
+            temp={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.avgtemp_c
+            }
+            WindSpeed={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.avgvis_km
+            }
+            tempIcon={
+              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.condition
+                .icon
+            }
+            altImage={weatherMarkerMap[4].dataApi.location.name}
+          />
+        </>
+      )}
     </PanelStyled>
   );
 }
@@ -52,6 +96,7 @@ const PanelStyled = styled.div`
   position: fixed;
   top: 0;
   height: 100vh;
+  text-decoration: none;
 
   width: 26rem;
   background: white;
