@@ -4,6 +4,14 @@ The objective of the project is to present an interactive world map that allows 
 
 Additionally, there is a search function that enables selecting a city by pointing to it on the map and displaying the corresponding weather data.
 
+## Api connection URL
+
+Use of API Weather instead of openweather following a blocking of requests on Sunday (04/30/23) :
+I provide two links to insert in the .env.local file:
+
+REACT_APP_API_URL='https://api.weatherapi.com/v1/forecast.json'
+REACT_APP_API_KEY ='dca9bf60966d4dd9a2f120022222705'
+
 ## Available Scripts
 
 In the project directory, you can run with docker-compose : `npm run launch`
