@@ -45,6 +45,6 @@ const BoxWeatherStyled = styled.div`
   width: 26rem;
   position: fixed;
   padding-top: 0.5rem;
-  border-top: 1px solid #d9d9d9;
+  margin-top: 1rem;
   background: white;
 `;

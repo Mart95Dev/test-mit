@@ -8,7 +8,7 @@ function MessageEmpty() {
         <span className=" text-center text-xl">Vous avez oublié de saisir</span>
         <span className="text-center text-xl">le nom d'une ville</span>
       </div>
-      <div className="absolute bottom-[21.2rem] left-32 rotate-6">
+      <div className="absolute bottom-[21rem] left-32 rotate-6">
         <span className="text-center text-4xl">Inconnue</span>
       </div>
     </>

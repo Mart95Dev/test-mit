@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
-// import ButtonSearch from "./ButtonSearch";
 
 const InputText = forwardRef(({ placeholder }, ref) => {
   return (
@@ -11,7 +10,6 @@ const InputText = forwardRef(({ placeholder }, ref) => {
         aria-label={placeholder}
         placeholder={placeholder}
       />
-      {/* <ButtonSearch /> */}
     </InputTextStyled>
   );
 });

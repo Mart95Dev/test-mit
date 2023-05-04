@@ -5,6 +5,11 @@ import MessageEmpty from "./../Slide/MessageEmpty";
 function PanelEmpty() {
   return (
     <PanelEmptyStyled>
+      <div className="text-[#393838] flex flex-col absolute top-[7rem]  w-full">
+        <span className="text-center text-3xl text-red-600">OUPS !</span>
+        <span className=" text-center text-xl">Vous avez oublié de saisir</span>
+        <span className="text-center text-xl">le nom d'une ville</span>
+      </div>
       <img
         className="image panel"
         src="/images/panneau-vide.png"
@@ -15,7 +20,10 @@ function PanelEmpty() {
         src="/images/butte.png"
         alt="sol nu avec un socle en béton"
       />
-      <MessageEmpty className="message" />
+
+      <div className="absolute bottom-[21rem] left-[9.5rem] rotate-6">
+        <span className="text-center text-4xl">Inconnue</span>
+      </div>
     </PanelEmptyStyled>
   );
 }
@@ -30,8 +38,8 @@ const PanelEmptyStyled = styled.div`
 
   .panel {
     z-index: 5;
-    top: 21rem;
-    left: 1.9rem;
+    bottom: 6.2rem;
+    left: 3.4rem;
   }
 
   .floor {

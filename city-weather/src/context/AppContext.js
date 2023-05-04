@@ -10,4 +10,8 @@ export default createContext({
   fetchData: () => {},
   weatherMarkerMap: [],
   setWeatherMarkerMap: () => {},
+  setCenterMarkerMap: () => {},
+  centerMarkerMap: [],
+  timestampCurrent: new Date(),
+  setTimestampCurrent: () => {},
 });
