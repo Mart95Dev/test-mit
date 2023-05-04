@@ -16,8 +16,10 @@ const Panel = () => {
   const { weatherMarkerMap, isError, isOpen, setIsOpen } =
     useContext(AppContext);
 
+
   const handleClickPanel = () => {
     if (weatherMarkerMap.length === 5) setIsOpen(!isOpen);
+
   };
   return (
     <PanelStyled
