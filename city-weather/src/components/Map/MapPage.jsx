@@ -33,10 +33,11 @@ export function MapPage() {
     fetchData(positionCities)
       .then((data) => setWeatherMarkerMap(data))
       .catch((err) => console.log("mapPage", err));
+    console.log(data);
   }, []);
 
   return (
-    <MapPageStyled>
+    <MapPageStyled></MapPageStyled>
       <MapContainer
         center={[zoomStart[0].latitude, zoomStart[0].longitude]}
         zoom={5}
