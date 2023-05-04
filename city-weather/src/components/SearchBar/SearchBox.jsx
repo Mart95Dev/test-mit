@@ -13,35 +13,53 @@ import { zoomStart } from "../Map/coordinates";
  */
 function SearchBox() {
   //state
-  const { setWeatherMarkerMap, setIsOpen, fetchData ,setIsError, setCenterMarkerMap} = useContext(AppContext);
+  const {
+    setWeatherMarkerMap,
+    setIsOpen,
+    fetchData,
+    setIsError,
+    setCenterMarkerMap,
+    setTimestampCurrent,
+  } = useContext(AppContext);
 
   let inputRef = useRef(null);
 
+  const handleChange = () => {
+    if (inputRef.current.value.length === 0) {
+      setIsOpen(false);
+      setTimestampCurrent(new Date());
+    }
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const prompt = inputRef.current.value.trim();
+    if (prompt === "") return setIsOpen(false);
     if (prompt.length > 0) {
-      if (prompt === "") return setIsOpen(false);
       const newCity = { city: prompt, image: null };
       fetchData([...positionCities, newCity]).then((data) => {
-         
-        if(data[4].dataApi === "error"){
+        if (data[4].dataApi === "error") {
           setIsError(true);
-          setCenterMarkerMap([zoomStart[0].latitude, zoomStart[0].longitude])
-        }else{
-        setIsError(false);
-        setCenterMarkerMap([data[4].dataApi.location.lat, data[4].dataApi.location.lon])
+          setCenterMarkerMap([zoomStart[0].latitude, zoomStart[0].longitude]);
+        } else {
+          setIsError(false);
+          setCenterMarkerMap([
+            data[4].dataApi.location.lat,
+            data[4].dataApi.location.lon,
+          ]);
         }
         setWeatherMarkerMap(data);
-        setIsOpen(true); 
-        
-      })
-       
+        setIsOpen(true);
+      });
     }
   };
 
   return (
-    <SearchBoxStyled id="prompt" onSubmit={(e) => handleSubmit(e)}>
+    <SearchBoxStyled
+      id="prompt"
+      onChange={handleChange}
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <InputText ref={inputRef} placeholder="Saisir une ville" />
       <ButtonSearch />
     </SearchBoxStyled>

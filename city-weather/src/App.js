@@ -12,10 +12,13 @@ function App() {
   const [weatherMarkerMap, setWeatherMarkerMap] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [timestampCurrent, setTimestampCurrent] = useState(null);
   const { fetchData } = useFetch();
 
-  const [centerMarkerMap, setCenterMarkerMap] = useState([zoomStart[0].latitude, zoomStart[0].longitude]); 
+  const [centerMarkerMap, setCenterMarkerMap] = useState([
+    zoomStart[0].latitude,
+    zoomStart[0].longitude,
+  ]);
   const AppContextValue = {
     searchCity,
     setSearchCity,
@@ -27,12 +30,10 @@ function App() {
     weatherMarkerMap,
     setWeatherMarkerMap,
     centerMarkerMap,
-    setCenterMarkerMap
+    setCenterMarkerMap,
+    timestampCurrent,
+    setTimestampCurrent,
   };
-
-  useEffect(()=>{
-    console.log(isError)
-  },[isError])
 
   return (
     <AppContext.Provider value={AppContextValue}>

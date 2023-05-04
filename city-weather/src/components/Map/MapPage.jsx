@@ -25,14 +25,19 @@ export function MapPage() {
     popupAnchor: [1, -34],
   });
 
-  const { fetchData, weatherMarkerMap, setWeatherMarkerMap, centerMarkerMap } =
-    useContext(AppContext);
+  const {
+    fetchData,
+    weatherMarkerMap,
+    setWeatherMarkerMap,
+    centerMarkerMap,
+    timestampCurrent,
+  } = useContext(AppContext);
 
   useEffect(() => {
     fetchData(positionCities).then((data) => {
       setWeatherMarkerMap(data);
     });
-  }, []);
+  }, [timestampCurrent]);
 
   useEffect(() => {
     if (weatherMarkerMap[4]) {
@@ -43,7 +48,7 @@ export function MapPage() {
     <MapPageStyled>
       <MapContainer
         center={centerMarkerMap}
-        zoom={10}
+        zoom={5}
         scrollWheelZoom={true}
         zoomControl={false}
         className="map"
