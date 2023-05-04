@@ -9,6 +9,7 @@ import { useFetch } from "./components/Map/useFetch";
 function App() {
   const [searchCity, setSearchCity] = useState("");
   const [weatherMarkerMap, setWeatherMarkerMap] = useState([]);
+  const [isError, setIsError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { fetchData } = useFetch();
 
@@ -17,6 +18,8 @@ function App() {
     setSearchCity,
     isOpen,
     setIsOpen,
+    isError,
+    setIsError,
     fetchData,
     weatherMarkerMap,
     setWeatherMarkerMap,
