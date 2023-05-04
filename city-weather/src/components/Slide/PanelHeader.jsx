@@ -5,7 +5,7 @@ function PanelHeader({ city }) {
   return (
     <PanelHeaderStyled className="pt-20 ">
       <div className=" meteo uppercase">Météo</div>
-      <span className="city  pt-20">{city}</span>
+      <span className="city pt-20">{city}</span>
       <img
         className="panneau"
         src="./images/panneau-ville.png"
@@ -31,7 +31,7 @@ const PanelHeaderStyled = styled.div`
 
   .city {
     position: absolute;
-    top: 20%;
+    top: 9.5rem;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
