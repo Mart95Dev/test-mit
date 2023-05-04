@@ -17,8 +17,7 @@ function Panel() {
     useContext(AppContext);
 
   const handleClickPanel = (open) => {
-    if (weatherMarkerMap?.dataApi && weatherMarkerMap.length === 5)
-      setIsOpen(!open);
+    if (weatherMarkerMap.length === 5) setIsOpen(!open);
   };
 
   console.log("test iserror", isError);
