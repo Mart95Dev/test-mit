@@ -13,11 +13,15 @@ import { translateDayAndDate, ellipse } from "./helper";
  */
 
 function Panel() {
-  const { weatherMarkerMap, isOpen, setIsOpen } = useContext(AppContext);
+  const { weatherMarkerMap, isError, isOpen, setIsOpen } =
+    useContext(AppContext);
 
   const handleClickPanel = (open) => {
-    if (weatherMarkerMap.length === 5) setIsOpen(!open);
+    if (weatherMarkerMap?.dataApi && weatherMarkerMap.length === 5)
+      setIsOpen(!open);
   };
+  console.log("test isOpen", isOpen);
+  console.log("test iserror", isError);
 
   return (
     <PanelStyled
@@ -29,61 +33,63 @@ function Panel() {
         onClick={() => handleClickPanel(isOpen)}
       />
 
-      {weatherMarkerMap.length === 5 && (
+      {weatherMarkerMap.length === 5 && !isError ? (
         <>
           <PanelHeader
-            city={ellipse(weatherMarkerMap[4].dataApi.location.name)}
+            city={ellipse(weatherMarkerMap[4]?.dataApi.location.name)}
           />
           <BoxWeather
             className="absolute top-[17rem]"
             day="Aujourd'hui"
             date={translateDayAndDate(
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].date
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].date
             )}
             tempMini={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.mintemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].day.mintemp_c
             }
             tempMax={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.maxtemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].day.maxtemp_c
             }
             temp={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.avgtemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].day.avgtemp_c
             }
             WindSpeed={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.avgvis_km
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].day.avgvis_km
             }
             tempIcon={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[0].day.condition
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].day.condition
                 .icon
             }
-            altImage={weatherMarkerMap[4].dataApi.location.name}
+            altImage={weatherMarkerMap[4]?.dataApi.location.name}
           />
 
           <BoxWeather
             className="absolute top-[34rem]"
             day="Demain"
             date={translateDayAndDate(
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].date
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].date
             )}
             tempMini={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.mintemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].day.mintemp_c
             }
             tempMax={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.maxtemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].day.maxtemp_c
             }
             temp={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.avgtemp_c
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].day.avgtemp_c
             }
             WindSpeed={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.avgvis_km
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].day.avgvis_km
             }
             tempIcon={
-              weatherMarkerMap[4].dataApi.forecast.forecastday[1].day.condition
+              weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].day.condition
                 .icon
             }
-            altImage={weatherMarkerMap[4].dataApi.location.name}
+            altImage={weatherMarkerMap[4]?.dataApi.location.name}
           />
         </>
+      ) : (
+        isError && <PanelEmpty />
       )}
     </PanelStyled>
   );

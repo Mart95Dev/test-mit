@@ -30,7 +30,9 @@ export function MapPage() {
     useContext(AppContext);
 
   useEffect(() => {
-    fetchData(positionCities).then((data) => setWeatherMarkerMap(data));
+    fetchData(positionCities)
+      .then((data) => setWeatherMarkerMap(data))
+      .catch((err) => console.log("mapPage", err));
   }, []);
 
   return (

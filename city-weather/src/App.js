@@ -10,6 +10,7 @@ function App() {
   const [searchCity, setSearchCity] = useState("");
   const [weatherMarkerMap, setWeatherMarkerMap] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { fetchData } = useFetch();
 
   const AppContextValue = {
@@ -17,6 +18,8 @@ function App() {
     setSearchCity,
     isOpen,
     setIsOpen,
+    isError,
+    setIsError,
     fetchData,
     weatherMarkerMap,
     setWeatherMarkerMap,

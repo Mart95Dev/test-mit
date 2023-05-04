@@ -8,4 +8,6 @@ export default createContext({
   fetchData: () => {},
   weatherMarkerMap: [],
   setWeatherMarkerMap: () => {},
+  isError: false,
+  setIsError: () => {},
 });
