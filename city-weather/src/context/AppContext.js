@@ -10,4 +10,6 @@ export default createContext({
   setWeatherMarkerMap: () => {},
   isError: false,
   setIsError: () => {},
+  setCenterMarkerMap: ()=> {},
+  centerMarkerMap : []
 });

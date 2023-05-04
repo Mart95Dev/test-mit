@@ -12,26 +12,19 @@ import { translateDayAndDate, ellipse } from "./helper";
  *
  */
 
-function Panel() {
+const Panel = () => {
   const { weatherMarkerMap, isError, isOpen, setIsOpen } =
     useContext(AppContext);
 
-  const handleClickPanel = (open) => {
-    if (weatherMarkerMap?.dataApi && weatherMarkerMap.length === 5)
-      setIsOpen(!open);
+  const handleClickPanel = () => {
+    if (weatherMarkerMap.length === 5) setIsOpen(!isOpen);
   };
-  console.log("test isOpen", isOpen);
-  console.log("test iserror", isError);
-
   return (
     <PanelStyled
       className="text-3xl font-bold underline"
       style={isOpen ? { left: "0rem" } : { left: "-26rem" }}
     >
-      <ButtonPanel
-        isSlideOpened={isOpen}
-        onClick={() => handleClickPanel(isOpen)}
-      />
+      <ButtonPanel isSlideOpened={isOpen} onClick={() => handleClickPanel()} />
 
       {weatherMarkerMap.length === 5 && !isError ? (
         <>
@@ -39,7 +32,7 @@ function Panel() {
             city={ellipse(weatherMarkerMap[4]?.dataApi.location.name)}
           />
           <BoxWeather
-            className="absolute top-[17rem]"
+            className="boxWeatherStyle"
             day="Aujourd'hui"
             date={translateDayAndDate(
               weatherMarkerMap[4]?.dataApi.forecast.forecastday[0].date
@@ -64,7 +57,7 @@ function Panel() {
           />
 
           <BoxWeather
-            className="absolute top-[34rem]"
+            className="boxWeatherStyle"
             day="Demain"
             date={translateDayAndDate(
               weatherMarkerMap[4]?.dataApi.forecast.forecastday[1].date
@@ -93,7 +86,7 @@ function Panel() {
       )}
     </PanelStyled>
   );
-}
+};
 
 export default Panel;
 
@@ -110,6 +103,9 @@ const PanelStyled = styled.div`
   -moz-box-shadow: 1px 1px 11px -3px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 11px -3px rgba(0, 0, 0, 0.75);
 
+  .boxWeatherStyle {
+    position: initial;
+  }
   .header {
     position: relative;
     padding-top: 68px;

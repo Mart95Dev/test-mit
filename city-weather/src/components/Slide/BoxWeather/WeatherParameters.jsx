@@ -19,9 +19,7 @@ const WeatherParametersStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6rem;
-
-  border-bottom: 1px solid #d9d9d9;
+  height: 6rem; 
 
   span {
     padding: 0.3rem 2.5rem;

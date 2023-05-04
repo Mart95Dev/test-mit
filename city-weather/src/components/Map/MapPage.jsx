@@ -1,8 +1,7 @@
 import { useEffect, useContext } from "react";
 import AppContext from "../../context/AppContext";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { positionCities } from "./coordinates";
-import { zoomStart } from "./coordinates";
 import styled from "styled-components";
 import Card from "./../../Reusable/Card";
 import L from "leaflet";
@@ -26,21 +25,25 @@ export function MapPage() {
     popupAnchor: [1, -34],
   });
 
-  const { fetchData, weatherMarkerMap, setWeatherMarkerMap } =
+  const { fetchData, weatherMarkerMap, setWeatherMarkerMap, centerMarkerMap } =
     useContext(AppContext);
 
   useEffect(() => {
-    fetchData(positionCities)
-      .then((data) => setWeatherMarkerMap(data))
-      .catch((err) => console.log("mapPage", err));
-    console.log(data);
+    fetchData(positionCities).then((data) => {
+      setWeatherMarkerMap(data);
+    });
   }, []);
 
+  useEffect(() => {
+    if (weatherMarkerMap[4]) {
+    }
+  });
+
   return (
-    <MapPageStyled></MapPageStyled>
+    <MapPageStyled>
       <MapContainer
-        center={[zoomStart[0].latitude, zoomStart[0].longitude]}
-        zoom={5}
+        center={centerMarkerMap}
+        zoom={10}
         scrollWheelZoom={true}
         zoomControl={false}
         className="map"
@@ -49,22 +52,27 @@ export function MapPage() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {weatherMarkerMap.map((data) => {
-          return (
-            <Marker
-              key={data.dataApi.location.name}
-              position={[data.dataApi.location.lat, data.dataApi.location.lon]}
-              icon={data.img.includes("cdn") === true ? redIcon : defaultIcon}
-            >
-              <Popup>
-                <Card
-                  cityName={data.dataApi.location.name}
-                  image={data.img}
-                  days={data.dataApi.forecast.forecastday}
-                />
-              </Popup>
-            </Marker>
-          );
+        {weatherMarkerMap.map((data, i) => {
+          if (data.dataApi !== "error") {
+            return (
+              <Marker
+                key={data.dataApi.location.name}
+                position={[
+                  data.dataApi.location.lat,
+                  data.dataApi.location.lon,
+                ]}
+                icon={data.img.includes("cdn") === true ? redIcon : defaultIcon}
+              >
+                <Popup>
+                  <Card
+                    cityName={data.dataApi.location.name}
+                    image={data.img}
+                    days={data.dataApi.forecast.forecastday}
+                  />
+                </Popup>
+              </Marker>
+            );
+          }
         })}
       </MapContainer>
     </MapPageStyled>

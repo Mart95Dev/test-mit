@@ -1,16 +1,12 @@
-import { useContext } from "react";
-import AppContext from "../../context/AppContext";
+ 
 
-export const useFetch = () => {
-  const { isOpen, setIsOpen, setIsError } = useContext(AppContext);
+export const useFetch = () => { 
 
   const dataApi = async (key, url, city) => {
     const partialUrl = `${url}?key=${key}&days=3&dt&q=${city}`;
     const response = await fetch(partialUrl);
-    if (response.status === 400) {
-      const error = true;
-      setIsError(error);
-      return Promise.reject("OUPS ERROR");
+    if (response.status === 400) { 
+      return Promise.resolve("error");
     }
     return response.json();
   };
