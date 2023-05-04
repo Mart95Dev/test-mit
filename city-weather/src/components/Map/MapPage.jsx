@@ -1,10 +1,38 @@
+import { useEffect, useContext } from "react";
+import AppContext from "../../context/AppContext";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { positionCities } from "./coordinates";
 import { zoomStart } from "./coordinates";
 import styled from "styled-components";
 import Card from "./../../Reusable/Card";
+import L from "leaflet";
+
+/**
+ * display map and marker on map on load
+ *
+ */
 
 export function MapPage() {
+  const redIcon = L.icon({
+    iconUrl: "/images/marker-icon-red.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+  });
+  const defaultIcon = L.icon({
+    iconUrl: "/images/marker-icon-default.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+  });
+
+  const { fetchData, weatherMarkerMap, setWeatherMarkerMap } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    fetchData(positionCities).then((data) => setWeatherMarkerMap(data));
+  }, []);
+
   return (
     <MapPageStyled>
       <MapContainer
@@ -18,11 +46,19 @@ export function MapPage() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {positionCities.map(({ id, latitude, longitude, url }) => {
+        {weatherMarkerMap.map((data) => {
           return (
-            <Marker key={id} position={[latitude, longitude]}>
+            <Marker
+              key={data.dataApi.location.name}
+              position={[data.dataApi.location.lat, data.dataApi.location.lon]}
+              icon={data.img.includes("cdn") === true ? redIcon : defaultIcon}
+            >
               <Popup>
-                <Card cityName={id} image={url} />
+                <Card
+                  cityName={data.dataApi.location.name}
+                  image={data.img}
+                  days={data.dataApi.forecast.forecastday}
+                />
               </Popup>
             </Marker>
           );
