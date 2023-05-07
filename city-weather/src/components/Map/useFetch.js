@@ -1,6 +1,6 @@
 export const useFetch = () => {
   const dataApi = async (key, url, city) => {
-    const partialUrl = `${url}?key=${key}&days=3&dt&q=${city}`;
+    const partialUrl = `${url}?key=${key}&days=3&dt&q=${city}&lang=fr`;
     const response = await fetch(partialUrl);
     if (response.status === 400) {
       return Promise.resolve("error");

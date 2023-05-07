@@ -4,7 +4,7 @@ import AppContext from "../../context/AppContext";
 import PanelHeader from "./PanelHeader";
 import BoxWeather from "./../../Reusable/BoxWeather";
 import ButtonPanel from "./../Slide/ButtonPanel";
-import PanelEmpty from "./PanelEmpty"; // @Fixme
+import PanelEmpty from "./PanelEmpty";
 import { translateDayAndDate, ellipse } from "./helper";
 
 /**
@@ -16,13 +16,13 @@ const Panel = () => {
   const { weatherMarkerMap, isError, isOpen, setIsOpen } =
     useContext(AppContext);
 
-
   const handleClickPanel = () => {
     if (weatherMarkerMap.length === 5) setIsOpen(!isOpen);
-
   };
+
   return (
     <PanelStyled
+      id="panelStyled"
       className="text-3xl font-bold underline"
       style={isOpen ? { left: "0rem" } : { left: "-26rem" }}
     >
@@ -108,6 +108,7 @@ const PanelStyled = styled.div`
   .boxWeatherStyle {
     position: initial;
   }
+
   .header {
     position: relative;
     padding-top: 68px;
@@ -128,6 +129,10 @@ const PanelStyled = styled.div`
       margin-left: 2rem;
       width: 85%;
     }
+  }
+
+  .close {
+    left: -26rem !important;
   }
 
   .box {

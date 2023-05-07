@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import MessageEmpty from "./../Slide/MessageEmpty";
 
 function PanelEmpty() {
   return (
     <PanelEmptyStyled>
       <div className="text-[#393838] flex flex-col absolute top-[7rem]  w-full">
         <span className="text-center text-3xl text-red-600">OUPS !</span>
-        <span className=" text-center text-xl">Vous avez oublié de saisir</span>
-        <span className="text-center text-xl">le nom d'une ville</span>
+        <span className=" text-center text-xl">Le nom de cette ville est</span>
+        {/* <span className="text-center text-xl">est</span> */}
       </div>
       <img
         className="image panel"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 import { MapPage } from "./components/Map/MapPage";
 import SearchBox from "./components/SearchBar/SearchBox";
 import Panel from "./components/Slide/Panel";
@@ -14,11 +14,11 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [timestampCurrent, setTimestampCurrent] = useState(null);
   const { fetchData } = useFetch();
-
   const [centerMarkerMap, setCenterMarkerMap] = useState([
     zoomStart[0].latitude,
     zoomStart[0].longitude,
   ]);
+  let inputRef = useRef(null);
   const AppContextValue = {
     searchCity,
     setSearchCity,
@@ -33,6 +33,7 @@ function App() {
     setCenterMarkerMap,
     timestampCurrent,
     setTimestampCurrent,
+    inputRef,
   };
 
   return (

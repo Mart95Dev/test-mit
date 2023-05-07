@@ -27,16 +27,6 @@ const ButtonPanelStyled = styled.button`
   justify-content: center;
   align-items: center;
 
-  /* .open {
-    position: absolute;
-    left: 26rem;
-  }
-
-  .close {
-    position: absolute;
-    left: 0rem;
-  } */
-
   .icon {
     color: #689df6;
     font-size: 5rem;

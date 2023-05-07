@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import styled from "styled-components";
 import InputText from "./InputText";
@@ -20,9 +20,8 @@ function SearchBox() {
     setIsError,
     setCenterMarkerMap,
     setTimestampCurrent,
+    inputRef,
   } = useContext(AppContext);
-
-  let inputRef = useRef(null);
 
   const handleChange = () => {
     if (inputRef.current.value.length === 0) {
@@ -35,6 +34,7 @@ function SearchBox() {
     e.preventDefault();
     const prompt = inputRef.current.value.trim();
     if (prompt === "") return setIsOpen(false);
+
     if (prompt.length > 0) {
       const newCity = { city: prompt, image: null };
       fetchData([...positionCities, newCity]).then((data) => {

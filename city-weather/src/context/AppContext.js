@@ -14,4 +14,5 @@ export default createContext({
   centerMarkerMap: [],
   timestampCurrent: new Date(),
   setTimestampCurrent: () => {},
+  inputRef: null,
 });
