@@ -2,13 +2,19 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ButtonSearch from "./../components/SearchBar/ButtonSearch";
 import SearchBox from "./../components/SearchBar/SearchBox";
+import AppContext from "../context/AppContext";
 
 test("input value updates on button click", () => {
-  render(<SearchBox />);
-  render(<ButtonSearch />);
+  const searchValue = "toulouse";
+
+  render(
+    <AppContext.Provider value={{ inputRef: { current: null } }}>
+      <SearchBox />
+      <ButtonSearch />
+    </AppContext.Provider>
+  );
 
   const inputElement = screen.getByPlaceholderText("Saisir une ville");
-  const searchValue = "toulouse";
 
   fireEvent.change(inputElement, { target: { value: searchValue } });
 
